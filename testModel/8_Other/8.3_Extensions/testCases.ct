@@ -1,0 +1,67 @@
+# Other>Extensions>
+## 8.3.1 Explicit caching: Relative freshness of response with max-age=10, stale-while-revalidate=5 and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate=5;et:123' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate=5;et:123' -p 5 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate=5;et:123' -p 5 -e 'ch:false;st:200' -ep 'cb:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate=5;et:123' -e 'ch:true;st:200'
+
+## 8.3.2 Explicit caching: Relative freshness of response with s-maxage=10 and stale-while-revalidate=5
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10, stale-while-revalidate=5;et:123' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10, stale-while-revalidate=5;et:123' -p 5 -e 'ch:true;st:200' -ep 'cb:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10, stale-while-revalidate=5;et:123' -p 5 -e 'ch:false;st:200' -ep 'cb:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10, stale-while-revalidate=5;et:123' -e 'ch:true;st:200' -ep 'cb:true;st:200'
+
+## 8.3.3 Explicit caching: Relative freshness of response with expiration (Expires) in 10 seconds and stale-while-revalidate=5
+GET /rsc -c 'ac:application/json' -s 'exp:10, stale-while-revalidate=5;et:123' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:10, stale-while-revalidate=5;et:123' -p 5 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:10, stale-while-revalidate=5;et:123' -p 5 -e 'cb:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:10, stale-while-revalidate=5;et:123' -e 'cb:true;st:200'
+
+## 8.3.4 Explicit caching: Relative freshness of response with max-age=10 and stale-while-revalidate without value
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate;et:123' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate;et:123' -p 5 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate;et:123' -p 5
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate;et:123'
+
+## 8.3.5 Explicit caching: Relative freshness of response with max-age=10, stale-while-revalidate=5 and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate=5;et:123' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate=5;et:123' -p 5 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate=5;et:123;st:500'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate=5;et:123;st:500'
+
+## 8.3.6 Explicit caching: Relative freshness of response with max-age=5 and stale-if-error=5
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5, stale-if-error=5' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'st:500' -p 5 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'st:500' -e 'ch:false;st:500'
+
+## 8.3.7 Explicit caching: Relative freshness of response with s-maxage=5 and stale-if-error=5
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=5, stale-if-error=5' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'st:500' -e 'ch:true;st:200' -ep 'ch:false;st:200'
+
+## 8.3.8 Explicit caching: Relative freshness of response with expiration (Expires) in 5 seconds and stale-if-error=5
+GET /rsc -c 'ac:application/json' -s 'exp:5, stale-if-error=5' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'st:500' -e 'ch:true;st:200'
+
+## 8.3.9 Explicit caching: Relative freshness of response with max-age=5 and stale-if-error without value
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5, stale-if-error' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'st:500'
+
+## 8.3.10 Explicit caching: Relative freshness of response with max-age=10 and stale-while-revalidate=5 and stale-if-error=5
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate=5, stale-if-error=5' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate=5, stale-if-error=5' -p 5 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10, stale-while-revalidate=5, stale-if-error=5' -e 'ch:false;st:200'
+
+## 8.3.11 Explicit caching: Forcing all caches to validate stale responses with relative freshness lifetime max-age=10, must-revalidate and stale-while-revalidate=5
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123,stale-while-revalidate=5' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123,stale-while-revalidate=5' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10;et:123;st:500' -e 'ch:false;st:500'
+
+## 8.3.12 Explicit caching: Forcing all caches to validate stale responses with relative freshness lifetime max-age=10, must-revalidate, stale-if-error=5 and stale-while-revalidate=5
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123,stale-if-error=5,stale-while-revalidate=5' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123,stale-if-error=5,stale-while-revalidate=5' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10;et:123;st:500' -e 'ch:false;st:500'
+
+
+
+
+# Other>Extensions>

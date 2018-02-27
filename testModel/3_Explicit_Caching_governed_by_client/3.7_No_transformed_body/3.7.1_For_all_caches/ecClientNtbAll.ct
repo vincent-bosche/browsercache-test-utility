@@ -1,0 +1,8 @@
+## 3.7.1 Explicit caching demands: no-transform
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5' -e 'ch:false;st:200'
+GET /rsc -c 'cc:no-transform;ac:application/json' -s 'cc:max-age=5' -e 'ch:true;st:200'
+
+## 3.7.2 Explicit caching demands: no-transform and range request
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5' -e 'ch:false;st:200'
+GET /rsc -c 'cc:no-transform;ac:application/json;ra:bytes=0-1' -s 'cc:max-age=5' -e 'ch:true;st:200'
+

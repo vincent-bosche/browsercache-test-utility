@@ -1,0 +1,23 @@
+{
+	"dbCredentials" : {
+		"host" : "127.0.0.1",
+		"user" : "root",
+		"password" : "",
+		"database" : "test_result"
+	},
+	"httpPort" : 8080,
+	"httpsPort" : 444,
+
+	"cycle" : 1,
+
+	"testFolder" : "/testModel/",
+
+	"mimeTypes" : {
+		"html" : "text/html",
+		"jpeg" : "image/jpeg",
+		"jpg" : "image/jpeg",
+		"png" : "image/png",
+		"js" : "text/javascript",
+		"css" : "text/css"
+	},
+}

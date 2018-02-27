@@ -1,0 +1,37 @@
+## Attack vectors: Set-Cookie Attack, max-age=70
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=70;sc:random'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=70'
+
+## Attack vectors: Set-Cookie Attack, s-maxage=70
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=70;sc:random'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=70'
+
+## Attack vectors: Set-Cookie Attack, expires in 70 seconds
+GET /rsc -c 'ac:application/json' -s 'exp:70;sc:random'
+GET /rsc -c 'ac:application/json' -s 'exp:70'
+
+## Attack vectors: Web Deception Attack Test 1, no-store
+GET /rsc.png -c 'ac:image/png' -s 'cc:no-store'
+GET /rsc.png -c 'ac:image/png' -s 'cc:no-store'
+
+## Attack vectors: Web Deception Attack Test 2, max-age=0
+GET /rsc.png -c 'ac:image/png' -s 'cc:max-age=0'
+GET /rsc.png -c 'ac:image/png' -s 'cc:max-age=0'
+
+## Attack vectors: Web Deception Attack Test 3, s-maxage=0
+GET /rsc.png -c 'ac:image/png' -s 'cc:s-maxage=0'
+GET /rsc.png -c 'ac:image/png' -s 'cc:s-maxage=0'
+
+## Attack vectors: Web Deception Attack Test 4, expires 5 seconds before
+GET /rsc.png -c 'ac:image/png' -s 'exp:-5'
+GET /rsc.png -c 'ac:image/png' -s 'exp:-5'
+
+## Attack vectors: HTTP Request Smuggeling
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10;cl:10;cl:12'
+POST /rsc -c 'ac:application/json' -s 'cc:max-age=10;cl:10;cl:12'
+PUT /rsc -c 'ac:application/json' -s 'cc:max-age=10;cl:10;cl:12'
+DELETE /rsc -c 'ac:application/json' -s 'cc:max-age=10;cl:10;cl:12'
+PATCH /rsc -c 'ac:application/json' -s 'cc:max-age=10;cl:10;cl:12'
+OPTIONS /rsc -c 'ac:application/json' -s 'cc:max-age=10;cl:10;cl:12'
+
+

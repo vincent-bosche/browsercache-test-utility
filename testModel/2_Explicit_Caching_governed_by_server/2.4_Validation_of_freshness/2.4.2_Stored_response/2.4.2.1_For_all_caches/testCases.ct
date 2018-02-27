@@ -1,0 +1,37 @@
+# Explicit Caching governed by server>Validation of freshness>Stored response>For all caches>
+## 2.4.2.1.1 Explicit caching: Forcing all caches to validate stored responses with no-cache and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache;et:123' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache;et:123' -e 'cb:true;st:200'
+
+## 2.4.2.1.2 Explicit caching: Forcing all caches to validate stored responses with no-cache but without ETag
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache'
+
+## 2.4.2.1.3 Explicit caching: Forcing all caches to validate stored responses with no-cache and last modification (Last-Modified) one hour before
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache;lm:-3600' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache;lm:-3600' -e 'cb:true;st:200'
+
+## 2.4.2.1.4 Explicit caching: Forcing all caches to validate certain header fields with no-cache="X-Id" and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache="X-Id";et:123' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache="X-Id";et:123' -e 'cb:true;st:200'
+
+## 2.4.2.1.5 Explicit caching: Force all caches to validate certain header fields with no-cache="X-Id" and last modification (Last-Modified) one hour before
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache="X-Id";lm:-3600' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache="X-Id";lm:-3600' -e 'cb:true;st:200'
+
+## 2.4.2.1.6 Explicit caching: Forcing all caches to validate stored responses with no-cache, max-age=10 and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,no-cache;et:123' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,no-cache;et:123' -e 'cb:true;st:200'
+
+## 2.4.2.1.7 Explicit caching: Forcing all caches to validate stored responses with no-cache, s-maxage=10 and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,no-cache;et:123' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,no-cache;et:123' -e 'cb:true;st:200'
+
+## 2.4.2.1.8 Explicit caching: Forcing all caches to validate stored responses with no-cache, s-maxage=10 and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache;et:123;exp:10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:no-cache;et:123;exp:10' -e 'cb:true;st:200'
+
+
+
+
+# Explicit Caching governed by server>Validation of freshness>Stored response>For all caches>

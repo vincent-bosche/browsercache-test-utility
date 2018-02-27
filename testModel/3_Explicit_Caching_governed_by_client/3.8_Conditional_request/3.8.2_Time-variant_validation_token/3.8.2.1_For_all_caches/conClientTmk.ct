@@ -1,0 +1,36 @@
+## 7.2.1 Conditional request: If-Modified-Since and Last-Modified 10 seconds before
+GET /rsc -c 'ac:application/json' -s 'lm:-10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;ims:lm' -s 'lm:-10' -e 'ch:true;st:304'
+
+## 7.2.1 Conditional request: If-Modified-Since and Last-Modified 10 seconds before with max-age=10
+GET /rsc -c 'ac:application/json' -s 'lm:-10;cc:max-age=10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;ims:lm' -s 'lm:-10;cc:max-age=10' -e 'ch:true;st:304'
+
+## 7.2.2 Conditional request: If-Modified-Since and Last-Modified 10 seconds before with s-maxage=10
+GET /rsc -c 'ac:application/json' -s 'lm:-10;cc:s-maxage=10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;ims:lm' -s 'lm:-10;cc:s-maxage=10' -e 'ch:true;st:304'
+
+## 7.2.3 Conditional request: If-Modified-Since and Last-Modified 10 seconds before with Expires in 10 seconds
+GET /rsc -c 'ac:application/json' -s 'lm:-10;exp:10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;ims:lm' -s 'lm:-10;exp:10' -e 'ch:true;st:304'
+
+## 7.2.4 Conditional request: If-Modified-Since and Last-Modified 10 seconds before with max-age=5 and s-maxage=10
+GET /rsc -c 'ac:application/json' -s 'lm:-10;cc:max-age=5,s-maxage=10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;ims:lm' -s 'lm:-10;cc:max-age=5,s-maxage=10' -e 'ch:true;st:304'
+
+## 7.2.5 Conditional request: If-Modified-Since and Last-Modified 10 seconds before with max-age=5, s-maxage=10 and Expires in 10 seconds
+GET /rsc -c 'ac:application/json' -s 'lm:-10;cc:max-age=5,s-maxage=15;exp=10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;ims:lm' -s 'lm:-10;cc:max-age=5,s-maxage=15;exp=10' -e 'ch:true;st:304'
+
+## 7.2.6 Conditional request: If-Modified-Since and Last-Modified 1 hour in the future
+GET /rsc -c 'ac:application/json' -s 'lm:3600' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;ims:lm' -s 'lm:3600' -e 'ch:true;st:304'
+
+## 7.2.7 Conditional request: If-Modified-Since in 1 minute and Last-Modified in 1 hour
+GET /rsc -c 'ac:application/json' -s 'lm:3600' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;ims:60' -s 'lm:3600' -e 'ch:true;st:304'
+
+## 7.2.8 Conditional request: If-Modified-Since 1 minute before Last-Modified in 1 hour
+GET /rsc -c 'ac:application/json' -s 'lm:3600' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;ims:-60' -s 'lm:3600' -e 'ch:true;st:304'
+

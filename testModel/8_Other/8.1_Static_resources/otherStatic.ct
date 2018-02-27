@@ -1,0 +1,55 @@
+## 8.2.1 Other: Check if cache stores static resources heuristically
+GET /rsc.css -c 'ac:text/css' -s 'cc:no-store' -e 'ch:false;st:200'
+GET /rsc.css -c 'ac:text/css' -s 'cc:no-store' -e 'ch:false;st:200'
+
+## 8.2.2 Other: Check if cache stores static resources with no-store
+GET /rsc.css -c 'ac:text/css' -s 'cc:no-store' -e 'ch:false;st:200'
+GET /rsc.css -c 'ac:text/css' -s 'cc:no-store' -e 'ch:false;st:200'
+
+## 8.2.3 Other: Check if cache stores static resources with relative freshness lifetime of response max-age=0
+GET /rsc.css -c 'ac:text/css' -s 'cc:max-age=0' -e 'ch:false;st:200'
+GET /rsc.css -c 'ac:text/css' -s 'cc:max-age=0' -e 'ch:false;st:200'
+
+## 8.2.4 Other: Check if shared cache stores static resources with relative freshness lifetime of response s-maxage=0
+GET /rsc.css -c 'ac:text/css' -s 'cc:s-maxage=0' -e 'ch:false;st:200'
+GET /rsc.css -c 'ac:text/css' -s 'cc:s-maxage=0' -e 'ch:false;st:200'
+
+## 8.2.5 Other: Check if cache stores static resources with absolute freshness lifetime of response Expires 10 seconds before
+GET /rsc.css -c 'ac:text/css' -s 'exp:-10' -e 'ch:false;st:200'
+GET /rsc.css -c 'ac:text/css' -s 'exp:-10' -e 'ch:false;st:200'
+
+## 8.2.6 Other: Check if cache stores static resources with relative and absolute freshness lifetime of response max-age=0 and Expires in 10 seconds
+GET /rsc.css -c 'ac:text/css' -s 'cc:max-age=0,exp=10' -e 'ch:false;st:200'
+GET /rsc.css -c 'ac:text/css' -s 'cc:max-age=0,exp=10' -e 'ch:false;st:200'
+
+## 8.2.7 Other: Check if shared or private cache stores static resources with relative and absolute freshness lifetime of response max-age=15, s-maxage=0 and Expires in 10 seconds
+GET /rsc.png -c 'ac:image/png' -s 'cc:max-age=15,s-maxage=0,exp=10' -e 'ch:false;st:200'
+GET /rsc.png -c 'ac:image/png' -s 'cc:max-age=15,s-maxage=0,exp=10' -e 'ch:false;st:200'
+
+## 8.2.8 Other: Check if cache stores static resources heuristically
+GET /rsc.png -c 'ac:image/png' -s 'cc:no-store' -e 'ch:false;st:200'
+GET /rsc.png -c 'ac:image/png' -s 'cc:no-store' -e 'ch:false;st:200'
+
+## 8.2.9 Other: Check if cache stores static resources with no-store
+GET /rsc.png -c 'ac:image/png' -s 'cc:no-store' -e 'ch:false;st:200'
+GET /rsc.png -c 'ac:image/png' -s 'cc:no-store' -e 'ch:false;st:200'
+
+## 8.2.10 Other: Check if cache stores static resources with relative freshness lifetime of response max-age=0
+GET /rsc.png -c 'ac:image/png' -s 'cc:max-age=0' -e 'ch:false;st:200'
+GET /rsc.png -c 'ac:image/png' -s 'cc:max-age=0' -e 'ch:false;st:200'
+
+## 8.2.11 Other: Check if shared cache stores static resources with relative freshness lifetime of response s-maxage=0
+GET /rsc.png -c 'ac:image/png' -s 'cc:s-maxage=0' -e 'ch:false;st:200'
+GET /rsc.png -c 'ac:image/png' -s 'cc:s-maxage=0' -e 'ch:false;st:200'
+
+## 8.2.12 Other: Check if cache stores static resources with absolute freshness lifetime of response Expires 10 seconds before
+GET /rsc.png -c 'ac:image/png' -s 'exp:-10' -e 'ch:false;st:200'
+GET /rsc.png -c 'ac:image/png' -s 'exp:-10' -e 'ch:false;st:200'
+
+## 8.2.13 Other: Check if cache stores static resources with relative and absolute freshness lifetime of response max-age=0 and Expires in 10 seconds
+GET /rsc.png -c 'ac:image/png' -s 'cc:max-age=0,exp=10' -e 'ch:false;st:200'
+GET /rsc.png -c 'ac:image/png' -s 'cc:max-age=0,exp=10' -e 'ch:false;st:200'
+
+## 8.2.14 Other: Check if shared or private cache stores static resources with relative and absolute freshness lifetime of response max-age=15, s-maxage=0 and Expires in 10 seconds
+GET /rsc.png -c 'ac:image/png' -s 'cc:max-age=15,s-maxage=0,exp=10' -e 'ch:false;st:200'
+GET /rsc.png -c 'ac:image/png' -s 'cc:max-age=15,s-maxage=0,exp=10' -e 'ch:false;st:200'

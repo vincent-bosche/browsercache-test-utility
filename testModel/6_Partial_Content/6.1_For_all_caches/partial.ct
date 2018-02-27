@@ -1,0 +1,20 @@
+## Partial Content: max-age=65
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=65' -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json;ra:0-1' -s 'cc:max-age=65' -e 'ch:true;st:200'
+
+## Partial Content: s-maxage=65
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=65' -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json;ra:0-1' -s 'cc:s-maxage=65' -e 'ch:true;st:200'
+
+## Partial Content: Expires in 65 seconds
+GET /rsc -c 'ac:application/json' -s 'exp:65' -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json;ra:0-1' -s 'exp:65' -e 'ch:true;st:200'
+
+## Partial Content: Range request with If-Range and strong validator
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5;et:"123"' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;ir:"123";ra:bytes=0-1' -s 'cc:max-age=5;et:"123"' -e 'ch:true;st:206'
+
+## Partial Content: Range request with If-Range and weak validator
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5;et:W/"123"' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;ir:W/"123";ra:bytes=0-1' -s 'cc:max-age=5;et:W/"123"'
+

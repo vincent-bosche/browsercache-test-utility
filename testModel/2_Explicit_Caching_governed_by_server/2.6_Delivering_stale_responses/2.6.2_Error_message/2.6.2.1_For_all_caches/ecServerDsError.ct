@@ -1,0 +1,120 @@
+## 2.4.2.1 Explicit caching: Check if caches deliver a stale response when server returns an error code 500 with relative freshness lifetime of response max-age=5
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5;st:500' -e 'ch:true' -e 'st:500'
+
+## 2.4.2.2 Explicit caching: Check if shared caches deliver a stale response when server returns an error code 500 with relative freshness lifetime of response s-maxage=5
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=5' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=5;st:500' -e 'ch:true' -e 'st:500'
+
+## 2.4.2.3 Explicit caching: Check if shared caches deliver a stale response when server returns an error code 500 with relative freshness lifetime of response max-age=5 and s-maxage=10 
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5,s-maxage=10' -p 15 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5,s-maxage=10;st:500' -e 'ch:true' -e 'st:500'
+
+## 2.4.2.4 Explicit caching: Check if caches deliver a stale response when server returns an error code 500 with absolute freshness lifetime of response Expires in 5 seconds
+GET /rsc -c 'ac:application/json' -s 'exp:5' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:5;st:500' -e 'ch:true' -e 'st:500'
+
+## 2.4.2.5 Explicit caching: Check if caches deliver a stale response when server returns an error code 500 with a relative and absolute freshness lifetime of response max-age=10 and Expires in 5 seconds
+GET /rsc -c 'ac:application/json' -s 'exp:5;cc:max-age=10' -p 15 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:5;cc:max-age=10;st:500' -e 'ch:true' -e 'st:500'
+
+## 2.4.2.6 Explicit caching: Check if shared caches deliver a stale response when server returns an error code 500 with a relative and absolute freshness lifetime of response s-maxage=10 and Expires in 5 seconds
+GET /rsc -c 'ac:application/json' -s 'exp:5;cc:s-maxage=10' -p 15 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:5;cc:s-maxage=10;st:500' -e 'ch:true' -e 'st:500'
+
+## 2.4.2.7 Explicit caching: Check if shared caches deliver a stale response when server returns an error code 500 with a relative and absolute freshness lifetime of response max-age=5, s-maxage=10 and Expires in 5 seconds
+GET /rsc -c 'ac:application/json' -s 'exp:5;cc:max-age=10,s-maxage=10' -p 15 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:5;cc:max-age=10,s-maxage=10;st:500' -e 'ch:true' -e 'st:500'
+
+## 2.4.2.8 Explicit caching: Check if caches deliver a stale response when server returns an error code 500 without freshness lifetime of response
+GET /rsc -c 'ac:application/json' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'st:500' -e 'ch:true' -e 'st:500'
+
+## 2.4.2.9 Explicit caching: Check if caches deliver a stale response when server returns an error code 500 with ETag, but without freshness lifetime of response
+GET /rsc -c 'ac:application/json' -s 'et:123' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'st:500' -e 'ch:true' -e 'st:500'
+
+## 2.4.2.10 Explicit caching: Check if caches deliver a stale response when server returns an error code 500 with Last-Modified, but without freshness lifetime of response
+GET /rsc -c 'ac:application/json' -s 'lm:-10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'st:500' -e 'ch:true' -e 'st:500'
+
+## 2.4.2.11 Explicit caching: Check if caches deliver a stale response when server returns an error code 500 and is not allowed to use stale responses relative freshness lifetime of response max-age=10, must-revalidate as well as ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.12 Explicit caching: Check if shared caches deliver a stale response when server returns an error code 500 and server is not allowed to use stale responses with relative freshness lifetime of response s-maxage=10, proxy-revalidate as well as ETag
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;et:123' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;et:123;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.13 Explicit caching: Check if shared caches deliver a stale response when server server returns an error code 500 and is not allowed to use stale responses with relative freshenss liftime of response max-age=10, proxy-revalidate as well as ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;et:123' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;et:123;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.14 Explicit caching: Check if shared and private caches deliver a stale response when server server returns an error code 500 and is not allowed to use stale responses with relative and absolute freshenss liftime of response max-age=2, s-maxage=10, expiration (Expires) now, proxy-revalidate as well as ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,proxy-revalidate;et:123;exp:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,proxy-revalidate;et:123;exp:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,proxy-revalidate;et:123;exp:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.15 Explicit caching: Check if shared and private caches deliver a stale response when server server returns an error code 500 and is not allowed to use stale responses with relative and absolute freshenss liftime of response max-age=2, s-maxage=10 and expiration (Expires) now, must-revalidate as well as ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,must-revalidate;et:123;exp:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,must-revalidate;et:123;exp:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,must-revalidate;et:123;exp:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.16 Explicit caching: Check if caches deliver a stale response when server returns an error code 500 and is not allowed to use stale responses relative freshness lifetime of response max-age=10, must-revalidate as well as Last-Modified
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;lm:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;lm:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;lm:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.17 Explicit caching: Check if shared caches deliver a stale response when server returns an error code 500 and server is not allowed to use stale responses with relative freshness lifetime of response s-maxage=10, proxy-revalidate as well as Last-Modified
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;lm:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;lm:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;lm:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.18 Explicit caching: Check if shared caches deliver a stale response when server server returns an error code 500 and is not allowed to use stale responses with relative freshenss liftime of response max-age=10, proxy-revalidate as well as Last-Modified
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;lm:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;lm:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;lm:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.19 Explicit caching: Check if shared and private caches deliver a stale response when server server returns an error code 500 and is not allowed to use stale responses with relative and absolute freshenss liftime of response max-age=2, s-maxage=10 and expiration (Expires) now, proxy-revalidate as well as Last-Modified
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,proxy-revalidate;lm:0;exp:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,proxy-revalidate;lm:0;exp:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,proxy-revalidate;lm:0;exp:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.20 Explicit caching: Check if shared and private caches deliver a stale response when server server returns an error code 500 and is not allowed to use stale responses with relative and absolute freshenss liftime of response max-age=2, s-maxage=10 and expiration (Expires) now, must-revalidate as well as Last-Modified
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,must-revalidate;lm:0;exp:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,must-revalidate;lm:0;exp:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,must-revalidate;lm:0;exp:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.21 Explicit caching: Check if caches deliver a stale response when server returns an error code 500 and is not allowed to use stale responses relative freshness lifetime of response max-age=10, must-revalidate as well as Last-Modified and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123;lm:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123;lm:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123;lm:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.22 Explicit caching: Check if shared caches deliver a stale response when server returns an error code 500 and server is not allowed to use stale responses with relative freshness lifetime of response s-maxage=10, proxy-revalidate as well as Last-Modified and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;et:123;lm:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;et:123;lm:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;et:123;lm:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.23 Explicit caching: Check if shared caches deliver a stale response when server server returns an error code 500 and is not allowed to use stale responses with relative freshenss liftime of response max-age=10, proxy-revalidate as well as Last-Modified and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;et:123;lm:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;et:123;lm:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;et:123;lm:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.24 Explicit caching: Check if shared and private caches deliver a stale response when server server returns an error code 500 and is not allowed to use stale responses with relative and absolute freshenss liftime of response max-age=2, s-maxage=10 and expiration (Expires) now, proxy-revalidate as well as Last-Modified and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,proxy-revalidate;et:123;lm:0;exp:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,proxy-revalidate;et:123;lm:0;exp:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,proxy-revalidate;et:123;lm:0;exp:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.25 Explicit caching: Check if shared and private caches deliver a stale response when server server returns an error code 500 and is not allowed to use stale responses with relative and absolute freshenss liftime of response max-age=2, s-maxage=10 and expiration (Expires) now, must-revalidate as well as Last-Modified and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,must-revalidate;et:123;lm:0;exp:0' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,must-revalidate;et:123;lm:0;exp:0' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=2,s-maxage=10,must-revalidate;et:123;lm:0;exp:0;st:500' -e 'ch:false;st:500'
+
+## 2.4.2.11 Explicit caching: Check if caches deliver a stale response when server returns an error code 400 and is not allowed to use stale responses relative freshness lifetime of response max-age=10, must-revalidate as well as ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,must-revalidate;et:123;st:400'
+

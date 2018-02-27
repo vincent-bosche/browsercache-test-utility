@@ -1,0 +1,17 @@
+# Explicit Caching governed by server>Absolute freshness lifetime>For private caches>
+## 2.2.3.1 Explicit caching: Absolute freshness lifetime of response for all caches with expiration time of 10 seconds
+GET /rsc -c 'ac:application/json' -s 'cc:private;exp:10' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:private;exp:10' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:private;exp:10' -p 10 -e 'ch:false;st:200'
+
+## 2.2.3.2 Explicit caching: Absolute freshness lifetime of response for all caches with expiration time of 10 seconds before
+GET /rsc -c 'ac:application/json' -s 'cc:private;exp:-10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:private;exp:-10' -e 'ch:false;st:200'
+
+## 2.2.3.3 Explicit caching: Absolute freshness lifetime of response for all caches with public, status code 201 and expiration time of 10 seconds before
+GET /rsc -c 'ac:application/json' -s 'cc:private;exp:10;cc:public;st:201' -e 'ch:false;st:201'
+GET /rsc -c 'ac:application/json' -s 'cc:private;exp:10;cc:public;st:201' -e 'ch:true;st:201'
+
+
+
+# Explicit Caching governed by server>Absolute freshness lifetime>For private caches>

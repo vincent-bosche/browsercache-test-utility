@@ -1,0 +1,43 @@
+## 2.5.1.2.1 Explicit caching: Forcing shared caches to validate stale responses with relative freshness lifetime of response s-maxage=10 and proxy-revalidate
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;et:123' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,proxy-revalidate;et:123' -e 'ch:false;st:200'
+
+## 2.5.1.2.2 Explicit caching: Forcing shared caches to validate stale responses with proxy-revalidate and without freshness lifetime of response
+GET /rsc -c 'ac:application/json' -s 'cc:proxy-revalidate;et:123' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:proxy-revalidate;et:123' -e 'ch:false;st:200'
+
+## 2.5.1.2.3 Explicit caching: Forcing shared caches to validate stale response with relative freshness lifetime of response max-age=10 and proxy-revalidate
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;et:123' -p 10 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,proxy-revalidate;et:123' -e 'ch:false;st:200'
+
+## 2.5.1.2.4 Explicit caching: Forcing shared caches to validate stale response with relative freshness lifetime of response s-maxage=10 and must-revalidate
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,must-revalidate;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,must-revalidate;et:123' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10,must-revalidate;et:123' -e 'ch:false;st:200'
+
+## 2.5.1.2.5 Explicit caching: Forcing shared caches to validate stale responses with absolute freshness lifetime of response Expires in 10 seconds and proxy-revalidate
+GET /rsc -c 'ac:application/json' -s 'exp:10;cc:proxy-revalidate;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:10;cc:proxy-revalidate;et:123' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:10;cc:proxy-revalidate;et:123' -e 'ch:false;st:200'
+
+## 2.5.1.2.6 Explicit caching: Forcing shared caches to validate stale responses with relative and absolute freshness lifetime of response with max-age=20, Expires in 10 seconds and proxy-revalidate
+GET /rsc -c 'ac:application/json' -s 'exp:10;cc:max-age=20,proxy-revalidate;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:10;cc:max-age=20,proxy-revalidate;et:123' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:10;cc:max-age=20,proxy-revalidate;et:123' -e 'ch:true;st:200'
+
+## 2.5.1.2.7 Explicit caching: Forcing shared caches to validate stale responses with relative and absolute freshness lifetime of response with max-age=20, s-maxage=30, Expires in 10 seconds and proxy-revalidate
+GET /rsc -c 'ac:application/json' -s 'exp:10;cc:max-age=20,s-maxage=30,proxy-revalidate;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:10;cc:max-age=20,s-maxage=30,proxy-revalidate;et:123' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'exp:10;cc:max-age=20,s-maxage=30,proxy-revalidate;et:123' -e 'ch:true;st:200'
+
+## 2.5.1.2.8 Explicit caching: Forcing shared caches to validate stale responses with relative freshness lifetime of response max-age=5, s-maxage=10 and proxy-revalidate
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5,s-maxage=10,proxy-revalidate;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5,s-maxage=10,proxy-revalidate;et:123' -p 10 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5,s-maxage=10,proxy-revalidate;et:123' -e 'ch:false;st:200'
+
+## 2.5.1.2.9 Explicit caching: Forcing shared caches to validate stale responses with relative freshness lifetime of response s-maxage=10 and proxy-revalidate
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10;et:123' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10;et:123' -p 10 -e 'ch:true;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10;et:123' -e 'ch:false;st:200'

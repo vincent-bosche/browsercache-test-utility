@@ -1,0 +1,37 @@
+# Explicit Caching governed by server>Different absolute and relative freshness lifetime>For shared and private caches with different freshness lifetime>
+## 2.3.4.1 Explicit caching: Absolute and relative freshness lifetime of response for shared and private caches with expiration time of 10 seconds and s-maxage=5
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=5;exp:10' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=5;exp:10' -e 'ch:false;st:200' -ep 'ch:true;st:200'
+
+## 2.3.4.2 Explicit caching: Absolute and relative freshness lifetime of response for shared and private caches with expiration time of 5 seconds and s-maxage=10
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10;exp:5' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10;exp:5' -e 'ch:false;st:200'
+
+## 2.3.4.3 Explicit caching: Absolute and relative freshness lifetime of response for private and shared caches with expiration time of 10 seconds, max-age=10 and s-maxage=20
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,s-maxage=20;exp:10' -p 15 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,s-maxage=20;exp:10' -e 'ch:true;st:200' -ep 'ch:false;st:200'
+
+## 2.3.4.4 Explicit caching: Absolute and relative freshness lifetime of response for private and shared caches with expiration time of 5 seconds, max-age=10 and s-maxage=0
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,s-maxage=0;exp:5' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=10,s-maxage=0;exp:5' -e 'ch:false;st:200' -ep 'ch:true;st:200'
+
+## 2.3.4.5 Explicit caching: Absolute and relative freshness lifetime of response for private and shared caches with expiration time of 5 seconds, max-age=0 and s-maxage=10
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=0,s-maxage=10;exp:5' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=0,s-maxage=10;exp:5' -e 'ch:true;st:200' -ep 'ch:false;st:200'
+
+## 2.3.4.6 Explicit caching: Absolute and relative freshness lifetime of response for private and shared caches with expiration time of 5 seconds before, max-age=5 and s-maxage=10
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5,s-maxage=10;exp:-5' -p 7 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5,s-maxage=10;exp:-5' -e 'ch:true;st:200' -ep 'ch:false;st:200'
+
+## 2.3.4.7 Explicit caching: Relative freshness lifetime of response for private and shared caches with s-maxage=10, public and status code 201
+GET /rsc -c 'ac:application/json' -s 'exp:5;cc:public,s-maxage=10;st:201' -p 7
+GET /rsc -c 'ac:application/json' -s 'exp:5;cc:public,s-maxage=10;st:201' -e 'ch:true;st:201' -ep 'ch:false;st:201'
+
+## 2.3.4.8 Cache permission: Relative freshness lifetime of response for private and shared caches with s-maxage=10, public, status code 201 and expiration time of 5 seconds
+GET /rsc -c 'ac:application/json' -s 'exp:5;cc:public,max-age=10,s-maxage=20;st:201' -p 15
+GET /rsc -c 'ac:application/json' -s 'exp:5;cc:public,max-age=10,s-maxage=20;st:201' -e 'ch:true;st:201' -ep 'ch:false;st:201'
+
+
+
+
+# Explicit Caching governed by server>Different absolute and relative freshness lifetime>For shared and private caches with different freshness lifetime>

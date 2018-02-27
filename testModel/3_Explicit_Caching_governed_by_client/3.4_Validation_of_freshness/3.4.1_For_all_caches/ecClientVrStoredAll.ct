@@ -1,0 +1,28 @@
+## 3.4.1 Explicit caching demands: Relative freshness lifetime of response for caches with max-age=5 and forcing to validate stored response with no-cache and ETag
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5;et:123' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;cc:no-cache' -s 'cc:max-age=5;et:123' -e 'ch:false;st:200'
+
+## 3.4.2 Explicit caching demands: No freshness lifetime of response and forcing to validate stored response with no-cache and ETag
+GET /rsc -c 'ac:application/json' -s 'et:123' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;cc:no-cache' -s 'et:123' -e 'ch:false;st:200'
+
+## 3.4.3 Explicit caching demands: Relative freshness lifetime of response for caches with max-age=5 and forcing to validate stored response with no-cache and Last-Modified
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5;lm:-10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;cc:no-cache' -s 'cc:max-age=5;lm:-10' -e 'ch:false;st:200'
+
+## 3.4.4 Explicit caching demands: No freshness lifetime of response and forcing to validate stored response with no-cache and ETag
+GET /rsc -c 'ac:application/json' -s 'lm:-10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;cc:no-cache' -s 'lm:-10' -e 'ch:false;st:200'
+
+## 3.4.5 Explicit caching demands: Relative freshness lifetime of response for caches with max-age=5 and forcing to validate stored response with no-cache and Last-Modified
+GET /rsc -c 'ac:application/json' -s 'cc:max-age=5;et:123;lm:-10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;cc:no-cache' -s 'cc:max-age=5;et:123;lm:-10' -e 'ch:false;st:200'
+
+## 3.4.6 Explicit caching demands: No freshness lifetime of response and forcing to validate stored response with no-cache and ETag
+GET /rsc -c 'ac:application/json' -s 'et:123;lm:-10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;cc:no-cache' -s 'et:123;lm:-10' -e 'ch:false;st:200'
+
+## 3.4.7 Explicit caching demands: Force validation with no-cache in request and without ETag and Last-Modified as well as freshness lifetime of response
+GET /rsc -c 'ac:application/json' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;cc:no-cache' -e 'ch:false;st:200'
+

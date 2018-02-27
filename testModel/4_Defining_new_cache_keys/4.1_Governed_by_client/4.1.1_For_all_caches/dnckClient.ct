@@ -1,0 +1,6 @@
+## 5.1.1 Defining new cache keys: Add Accept
+GET /rsc -c 'ac:application/json;va:Accept' -s 'cc:max-age=10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/xml;va:Accept' -s 'cc:max-age=10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json;va:Accept' -s 'cc:max-age=10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/xml;va:Accept' -s 'cc:max-age=10' -e 'ch:false;st:200'
+

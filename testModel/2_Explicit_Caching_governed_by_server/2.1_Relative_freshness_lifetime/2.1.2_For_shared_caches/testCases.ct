@@ -1,0 +1,29 @@
+# Explicit Caching governed by server>Relative freshness lifetime>For shared caches>
+## 2.1.2.1 Explicit caching: Relative freshness lifetime of response for shared caches with s-maxage=10
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10' -p 5 -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10' -p 10 -e 'ch:true;st:200' -ep 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=10' -e 'ch:false;st:200'
+
+## 2.1.2.2 Explicit caching: Relative freshness lifetime of response for shared caches with s-maxage=0
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=0' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=0' -e 'ch:false;st:200'
+
+## 2.1.2.3 Explicit caching: Relative freshness lifetime of response for shared caches with s-maxage=-10
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=-10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=-10' -e 'ch:false;st:200'
+
+## 2.1.2.4 Explicit caching: Relative freshness lifetime of response for shared caches with s-maxage=-10
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=-10' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage=-10' -e 'ch:false;st:200'
+
+## 2.1.2.5 Explicit caching: Relative freshness lifetime of response for shared caches with s-maxage without value
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage' -e 'ch:false;st:200'
+GET /rsc -c 'ac:application/json' -s 'cc:s-maxage' -e 'ch:false;st:200'
+
+## 2.1.2.6 Explicit caching: Relative freshness lifetime of response for shared caches with s-maxage=10, public and status code 201
+GET /rsc -c 'ac:application/json' -s 'cc:public,s-maxage=10;st:201' -e 'ch:false;st:201'
+GET /rsc -c 'ac:application/json' -s 'cc:public,s-maxage=10;st:201' -e 'ch:true;st:201' -ep 'ch:false;st:201'
+
+
+
+# Explicit Caching governed by server>Relative freshness lifetime>For shared caches>

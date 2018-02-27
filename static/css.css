@@ -1,0 +1,117 @@
+.container {
+	max-width: none;
+}
+select {
+	max-width: 100%;
+}
+.console,
+.output {
+	overflow: auto;
+	max-height: 80vh;
+}
+.console .green, .success {
+	color: green;	
+}
+.console .red, .danger {
+	color: red;
+}
+.console .info {
+	color: blue;
+}
+.console .gray {
+	color: gray;
+}
+.log {
+	display: flex;
+}
+.step {
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #FFF;
+}
+
+.mono {
+	font-family: monospace;
+}
+table {
+	border-collapse: collapse;
+}
+td, th {
+	padding: 0;
+}
+
+.validation {
+	width: auto;
+}
+.validation td,
+.validation th {
+	padding: 2px;
+}
+
+.row-direction {
+	flex-direction: row;
+}
+.row.row-nowrap {
+	flex-wrap: nowrap;
+}
+
+
+#fetching {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 50;
+	background-color: rgba(255, 255, 255, .75);
+	text-align: center;
+	font-size: 3rem;
+}
+
+.testContainer {
+	padding: 2px 1rem;
+	background-color: #f5f2f0;
+	margin-bottom: 10px;
+}
+
+.testContainer h3,
+.testContainer h4 {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.testContainer .table {
+	padding-right: 1.0rem;
+	padding-left: 1.0rem;
+}
+
+.title {
+	font-style: italic;
+}
+
+.status {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+.stepName {
+	margin-right: 10px;
+	float: left;
+	font-size: 2rem;
+    color: #CCC;
+}
+
+.row.bordered > *{
+	border: 1px solid #AAA;
+}
+.row.border-between >*:not(:last-child) {
+	border-right: 1px solid #AAA;	
+}
+
+.table {
+	display: table;
+	width: 100%;
+}
+
+.table .cell {
+	display: table-cell;
+}
