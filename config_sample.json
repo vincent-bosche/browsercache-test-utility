@@ -20,4 +20,9 @@
 		"js" : "text/javascript",
 		"css" : "text/css"
 	},
+
+	"cert" : {
+		"key" : "cert/MyCert.key",
+		"cert": "cert/MyCert.cert"
+	}
 }
