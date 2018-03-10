@@ -23,16 +23,22 @@
 					<br>
 					<button class="button button-outline" id="btnStart" style="display: none;">startTest</button>
 					<button class="button button-outline" id="btnStop" style="display: none;">stop</button>
+					<span id="cycle"></span>
 				</div>
 				<div class="column">
 					<div class="row row-direction row-nowrap row-baseline">
-						<span id="cycle" class="column"></span>
+						
 
 						<label class="column"><input type="checkbox" id="saveTest" value="1">Save Result</label>
 
+
 						<label class="column"><input type="checkbox" name="incognito" id="incognito" value="1">Incognito mode</label>
+					</div>
+					<div class="row row-direction row-nowrap row-baseline">
 
 						<label class="column"><input type="checkbox" name="shared" id="shared" value="1">Shared tests</label>
+
+						<label class="column"><input type="checkbox" name="small_output" id="small_output" value="1" title="Less to render for low end devices">Show condensed output</label>
 					</div>
 				</div>
 			</div>

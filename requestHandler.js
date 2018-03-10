@@ -1,3 +1,7 @@
+/**
+ * Based on https://github.com/hvnguyen86/cacheTestNodeServer
+ */
+
 const url = require('url');
 const crypto = require('crypto');
 const fs = require('fs');
@@ -147,9 +151,10 @@ function requestHandler(req, res){
         else if(accept == "image/png"){
             res.setHeader("Content-Type",accept);
 
-            var p = new captchapng(10,10, parseInt(Math.random()*9000+1000)); // width,height,numeric captcha 
-            p.color(0, 0, 0, 0);  // First color: background (red, green, blue, alpha) 
-            p.color(80, 80, 80, 255); // Second color: paint (red, green, blue, alpha) 
+            // use a captcha to send fresh image
+            var p = new captchapng(10,10, parseInt(Math.random()*9000+1000));
+            p.color(0, 0, 0, 0);
+            p.color(80, 80, 80, 255);
 
             var img = p.getBase64();
             body = new Buffer(img,'base64');

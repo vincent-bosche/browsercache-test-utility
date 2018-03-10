@@ -97,11 +97,13 @@ function Result() {
 			}
 		}
 		
-		log("Response Header: " + JSON.stringify(step.respondedHeader));
-		if(step.bodyId != "" && step.bodyResponse.length < 75) {
-			log("Body: " + step.bodyResponse);
-		} else {
-			log("Body: Ressource: " + xhr.getResponseHeader('content-type'));
+		if(!document.getElementById('small_output').checked) {
+			log("Response Header: " + JSON.stringify(step.respondedHeader));
+			if(step.bodyId != "" && step.bodyResponse.length < 75) {
+				log("Body: " + step.bodyResponse);
+			} else {
+				log("Body: Ressource: " + xhr.getResponseHeader('content-type'));
+			}
 		}
 
 		this.validateResponse(step);

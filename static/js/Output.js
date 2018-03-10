@@ -69,40 +69,43 @@ function Output(target) {
 
 		table.appendChild(div);
 
-		var header = document.createElement('div');
-		header.className = "row";
+		if(!document.getElementById('small_output').checked) {
+			var header = document.createElement('div');
+			header.className = "row";
 
-		var request = document.createElement('div');
-		request.className = "column";
-		request.innerHTML = '<h4>Request</h4>';
+			var request = document.createElement('div');
+			request.className = "column";
+			request.innerHTML = '<h4>Request</h4>';
 
-		if(step.requestHeader) {
-			this.createRow(request, step.requestHeader);
+			if(step.requestHeader) {
+				this.createRow(request, step.requestHeader);
+			}
+
+			header.appendChild(request);
+
+			var responded = document.createElement('div');
+			responded.className = "column";
+			responded.innerHTML = '<h4>Responded</h4>';
+
+			if(step.respondedHeader) {
+				this.createRow(responded, step.respondedHeader);
+			}
+
+			header.appendChild(responded);
+
+			var missing = document.createElement('div');
+			missing.className = "column";
+			missing.innerHTML = '<h4>Missing</h4>';
+
+			if(step.missingHeaders) {
+				this.createRow(missing, step.missingHeaders);
+			}
+
+			header.appendChild(missing);
+
+			table.appendChild(header);
 		}
 
-		header.appendChild(request);
-
-		var responded = document.createElement('div');
-		responded.className = "column";
-		responded.innerHTML = '<h4>Responded</h4>';
-
-		if(step.respondedHeader) {
-			this.createRow(responded, step.respondedHeader);
-		}
-
-		header.appendChild(responded);
-
-		var missing = document.createElement('div');
-		missing.className = "column";
-		missing.innerHTML = '<h4>Missing</h4>';
-
-		if(step.missingHeaders) {
-			this.createRow(missing, step.missingHeaders);
-		}
-
-		header.appendChild(missing);
-
-		table.appendChild(header);
 		table.addEventListener('click', function(test) {
 			var el = document.querySelector('.console .t-' + test.id.replace(/\./g, "-"));
 			el.scrollIntoView(true);
@@ -117,10 +120,8 @@ function Output(target) {
 		for(var key in object) {
 			
 			var row = document.createElement('tr');
-			//row.className = "row";
 
 			var col = document.createElement('td');
-			//col.className = "column";
 			col.innerHTML = key;
 			row.appendChild(col);
 
@@ -158,12 +159,14 @@ function Output(target) {
 			td.innerHTML = validation[key].received + '/' + validation[key].expection;
 			tr.appendChild(td);
 
-			var td = document.createElement('td');
-			td.className = "mono";
-			if(validation[key].message) {
-				td.innerHTML = (validation[key].message.length > 80) ? validation[key].message.substr(0, 80) + "..." : validation[key].message;
+			if(!document.getElementById('small_output').checked) {
+				var td = document.createElement('td');
+				td.className = "mono";
+				if(validation[key].message) {
+					td.innerHTML = (validation[key].message.length > 80) ? validation[key].message.substr(0, 80) + "..." : validation[key].message;
+				}
+				tr.appendChild(td);
 			}
-			tr.appendChild(td);
 
 			table.appendChild(tr);
 		}

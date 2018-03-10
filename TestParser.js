@@ -1,5 +1,5 @@
 /**
- * Read test cases and parse return them as JSON
+ * Read test cases, parse and return them as JSON
  */
 const fs		= require('fs');
 const config	= require(__dirname + "/config.json");
@@ -48,10 +48,8 @@ class TestParser {
 		});
 	};
 
+	// Read one file
 	static getData(file) {
-		/*if(file.indexOf('2.1.2') == -1) {
-			return false;
-		}*/
 		let content = fs.readFileSync(file, 'utf8');
 		if(content) {
 			let parseContent = this.parse(content);
@@ -62,8 +60,12 @@ class TestParser {
 		return false;
 	};
 
-	static parse(content, limit = 0) {
-		var c = 0;
+	/**
+	 *
+	 * @param {string} content
+	 * @return {Object}
+	 */
+	static parse(content) {
 		var tests = [];
 		var tmp = [];
 		var lines = content.split("\n");
@@ -77,10 +79,6 @@ class TestParser {
 
 			if(line.substr(0, 2) == "##") {
 				if(Object.keys(tmp).length > 0) {
-					c++;
-					if(limit > 0 && limit <= c) {
-						break;
-					}
 					tests.push(tmp);
 				}
 
@@ -96,7 +94,7 @@ class TestParser {
 			}
 			if(line.substr(0, 1) != "#") {
 				let step = this.parseStep(line);
-				if(step.params && step.params.s && (regext_t.test(" " + step.params.s) /*|| step.params.s.substr(0, 2) == "t:"*/)) {
+				if(step.params && step.params.s && (regext_t.test(" " + step.params.s))) {
 					tmp.hasTerminate = true;
 				}
 				tmp.steps.push(step);

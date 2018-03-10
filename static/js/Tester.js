@@ -59,7 +59,11 @@ function Tester() {
 		var responseHeader = (typeof(params.s) !== "undefined") ? {'response-string' : params.s} : {};
 		var requestHeader = (typeof(params.c) !== "undefined") ? parseHeader(params.c) : {};
 		requestHeader['id'] = +new Date();
-		log("Sending request with requestHeader: " + JSON.stringify(requestHeader) + " setting responseHeader: " + JSON.stringify(responseHeader));
+		if(document.getElementById('small_output').checked) {
+			log("Sending request");
+		} else {
+			log("Sending request with requestHeader: " + JSON.stringify(requestHeader) + " setting responseHeader: " + JSON.stringify(responseHeader));
+		}
 		
 		var url = this.urlPath + step.url + this.urlParams;
 		var data = new FormData();

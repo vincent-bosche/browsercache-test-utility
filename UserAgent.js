@@ -1,3 +1,6 @@
+/**
+ * Detect browser and os from UA
+ */
 const os = {
 	"ipad" : "iPad",
 	"ipod" : "iPod",

@@ -1,6 +1,10 @@
+/**
+ * This script is called on every request.
+ * It will return a static ressource, a list with all tests or the test specific response
+ */
 const fs					= require("fs");
 const path 					= require("path");
-const formidable			= require('formidable');
+const formidable			= require('formidable'); // for receiving JSON for the DB
 
 const config				= require(__dirname + "/config.json");
 
@@ -22,10 +26,12 @@ class Callback {
 	};
 
 	action() {
+		// return all tests
 		if(this.req.url.indexOf("getTest.json") !== -1) {
 			this.getTests();
 		}
 
+		// not implemented yet
 		else if(this.req.url.indexOf("result.json") !== -1) {
 			new Results(this.req);
 		}
@@ -34,7 +40,9 @@ class Callback {
 		else if(this.req.url.indexOf("test=") !== -1) {
 			requestHandler(this.req, this.res);
 
-		} else if(this.req.url.indexOf("save.json") !== -1) {
+		}
+		// Save results
+		else if(this.req.url.indexOf("save.json") !== -1) {
 			if(!this.db) {
 				this.db = new SaveToDB();
 			}
@@ -97,10 +105,6 @@ class Callback {
 		data.UA = UserAgent.parseUserAgent(this.req.headers['user-agent']);
 		this.res.end(JSON.stringify(data));
 	};
-
-	restartServer() {
-		console.log("restart");
-	}
 };
 
 
