@@ -28,8 +28,19 @@ select {
 	padding-bottom: 10px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #FFF;
+	position: relative;
 }
-
+.step .timeout {
+	position: absolute;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+.step .timeout span{
+	background-color: #f5f2f0;
+	padding-right: 10px;
+	padding-left: 10px;
+}
 .mono {
 	font-family: monospace;
 }

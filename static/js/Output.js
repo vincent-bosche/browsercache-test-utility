@@ -104,6 +104,13 @@ function Output(target) {
 			header.appendChild(missing);
 
 			table.appendChild(header);
+
+			if(typeof(step.params.p) !== "undefined" && step.params.p > 0) {
+				var timeout = document.createElement('div');
+				timeout.className = "timeout";
+				timeout.innerHTML = "<span>Waiting " + step.params.p + " seconds</span>";
+				table.appendChild(timeout);
+			}
 		}
 
 		table.addEventListener('click', function(test) {
